@@ -24,4 +24,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cost_of_Service" />
 
+    <RadioGroup
+        android:id="@+id/tip_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:checkedButton="@id/percent_option_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/service_question">
+
+        <RadioButton
+            android:id="@+id/percent_option_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amazing (20%)"
+            android:textSize="11sp"/>
+        <RadioButton
+            android:id="@+id/percent_option_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good (15%)"
+            android:textSize="11sp"/>
+        <RadioButton
+            android:id="@+id/percent_option_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Okay (10%)"
+            android:textSize="11sp"/>
+        <RadioButton
+            android:id="@+id/percent_option_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terrible (0%)"
+            android:textSize="11sp"/>
+
+    </RadioGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
