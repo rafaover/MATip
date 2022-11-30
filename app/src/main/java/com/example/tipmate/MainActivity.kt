@@ -2,23 +2,62 @@ package com.example.tipmate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.EditText
+import com.example.tipmate.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
+import java.text.NumberFormat
+import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        // Binding calculateButton(Button) to a ClickListener and
+        // executing the calculate() method
+        binding.calculateButton.setOnClickListener { calculateTip() }
+    }
 
-        // Cost of Service variable that will be used to calculate the tip
-        // 1. Create a variable to hold the cost of service
-        // 2. Another variable to hold the cost of service and calculate with the tip
-        //  2.1 Variable to each tip? Based on Satisfaction
-        // 3. Onclick action/variable to calculate the tip
-        //   3.1 Makes a toast "congrats"
-        // 4. Print the TIP value on textview.
+    // Function to calculate the TIP when value is added and button pushed
+    fun calculateTip(){
+        // getting the text attribute from costOfService(EDITTEXT)
+        // The toString() was added because the data type in a EDITTEXT is an EDIBLE not String.
+        val stringCostOfService = binding.costOfService.text.toString()
+        val doubleCostOfService = stringCostOfService.toDouble()
+
+        //Binding the RadioButtonGroup and getting the selected RadioButton
+        val tipPercentOption = binding.tipOptions.checkedRadioButtonId
+
+        // Getting the right Tip percentage
+        val tipSelected = when(tipPercentOption) {
+            R.id.percent_option_20 -> 0.20
+            R.id.percent_option_15 -> 0.15
+            R.id.percent_option_10 -> 0.10
+            else -> 0.0
+        }
+        // Final TIP calculation
+        var finalTip = tipSelected * doubleCostOfService
+
+        // Tip rounding Up
+        val roundUpTip = binding.roundUpSwitch.isChecked
+        if (roundUpTip) { finalTip = kotlin.math.ceil(finalTip) }
+
+        // Formating the tip value for the local currency
+        NumberFormat.getCurrencyInstance()
+        val formattedTip = NumberFormat.getCurrencyInstance().format(finalTip)
+
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
 
         niceTipSnackBar()
     }
 
-
+    // Method to show a snackbar at the bottom when the user gives the tip.
+    fun niceTipSnackBar() {
+        val snackListPos = listOf(
+            "Well Done!", "Let's Roll", "That's what you got", "Hell Yeah!", "Noice!"
+        )
+        Snackbar.make(binding.calculateButton, snackListPos.random(), Snackbar.LENGTH_SHORT).show()
+    }
 }
