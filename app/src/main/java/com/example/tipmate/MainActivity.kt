@@ -9,14 +9,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var costOfServiceUser = findViewById<TextView>(R.id.cost_of_Service)
+        // Cost of Service variable that will be used to calculate the tip
+        // 1. Create a variable to hold the cost of service
+        // 2. Another variable to hold the cost of service and calculate with the tip
+        //  2.1 Variable to each tip? Based on Satisfaction
+        // 3. Onclick action/variable to calculate the tip
+        //   3.1 Makes a toast "congrats"
+        // 4. Print the TIP value on textview.
 
-
-        // Executes function
-        calculate()
-
+        niceTipSnackBar()
     }
-    // Function to calculate the TIP when value is added and button pushed
-    private fun calculate(costOfService: Float): Unit{
-    }
+
+
 }
