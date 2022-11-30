@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tip Mate</string>
+    <string name="cost_of_service">Custo do Serviço</string>
+    <string name="okay_10">Ok</string>
+    <string name="good_15">Bom</string>
+    <string name="amazing_20">Fantastico</string>
+    <string name="terrible_0">Terrível</string>
+    <string name="how_was_the_service">Como foi o serviço?</string>
+</resources>

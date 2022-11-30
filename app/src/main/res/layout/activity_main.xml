@@ -11,16 +11,17 @@
         android:id="@+id/cost_of_Service"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:hint="@string/cost_of_service"
+        android:hint="Cost of Service"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="false" />
 
     <TextView
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/how_was_the_service"
+        android:text="How was the service?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cost_of_Service" />
 
@@ -37,25 +38,25 @@
             android:id="@+id/percent_option_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amazing (20%)"
+            android:text="@string/amazing_20"
             android:textSize="11sp"/>
         <RadioButton
             android:id="@+id/percent_option_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Good (15%)"
+            android:text="@string/good_15"
             android:textSize="11sp"/>
         <RadioButton
             android:id="@+id/percent_option_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Okay (10%)"
+            android:text="@string/okay_10"
             android:textSize="11sp"/>
         <RadioButton
             android:id="@+id/percent_option_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Terrible (0%)"
+            android:text="@string/terrible_0"
             android:textSize="11sp"/>
 
     </RadioGroup>

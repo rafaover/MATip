@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tip Mate</string>
     <string name="cost_of_service">Cost of Service</string>
+    <string name="okay_10">Okay</string>
+    <string name="good_15">Good</string>
+    <string name="amazing_20">Fantastic</string>
+    <string name="terrible_0">Terrible</string>
     <string name="how_was_the_service">How was the service?</string>
 </resources>
