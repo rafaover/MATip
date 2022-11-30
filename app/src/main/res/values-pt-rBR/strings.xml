@@ -2,9 +2,13 @@
 <resources>
     <string name="app_name">Tip Mate</string>
     <string name="cost_of_service">Custo do Serviço</string>
-    <string name="okay_10">Ok</string>
-    <string name="good_15">Bom</string>
-    <string name="amazing_20">Fantastico</string>
-    <string name="terrible_0">Terrível</string>
+    <string name="okay_10">Ok (10%)</string>
+    <string name="good_15">Bom (15%)</string>
+    <string name="amazing_20">Fantastico (20%)</string>
+    <string name="terrible_0">Terrível (Sem Gorjeta)</string>
     <string name="how_was_the_service">Como foi o serviço?</string>
+    <string name="round_up_tip">Arredonda?</string>
+    <string name="calculate">Calcular</string>
+    <string name="tip_amount">Gorjeta Total</string>
+    <string name="result">Resultado</string>
 </resources>
