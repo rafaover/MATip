@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // Binding calculateButton(Button) to a ClickListener and
         // executing the calculate() method
-        binding.calculateButton.setOnClickListener { calculateTip() }
+        binding.calculateButton.setOnClickListener {
+            calculateTip()
+        }
     }
 
     // Function to calculate the TIP when value is added and button pushed
@@ -25,7 +27,13 @@ class MainActivity : AppCompatActivity() {
         // getting the text attribute from costOfService(EDITTEXT)
         // The toString() was added because the data type in a EDITTEXT is an EDIBLE not String.
         val stringCostOfService = binding.costOfService.text.toString()
-        val doubleCostOfService = stringCostOfService.toDouble()
+
+        val doubleCostOfService = stringCostOfService.toDoubleOrNull()
+        if (doubleCostOfService == null) {
+            Snackbar.make(findViewById(R.id.calculate_button), "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
+            return
+        }
+
 
         //Binding the RadioButtonGroup and getting the selected RadioButton
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
@@ -49,15 +57,14 @@ class MainActivity : AppCompatActivity() {
         val formattedTip = NumberFormat.getCurrencyInstance().format(finalTip)
 
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
-
         niceTipSnackBar()
     }
 
     // Method to show a snackbar at the bottom when the user gives the tip.
     fun niceTipSnackBar() {
         val snackListPos = listOf(
-            "Well Done!", "Let's Roll", "That's what you got", "Hell Yeah!", "Noice!"
+            "Well Done!", "Let's Roll", "Hell Yeah!", "Noice!"
         )
-        Snackbar.make(binding.calculateButton, snackListPos.random(), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(findViewById(R.id.calculate_button), snackListPos.random(), Snackbar.LENGTH_SHORT).show()
     }
 }
