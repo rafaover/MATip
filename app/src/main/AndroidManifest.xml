@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TipMate"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+            <!-- Added line above to adapt position for snackbar above keyboard -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
