@@ -9,6 +9,5 @@
     <string name="how_was_the_service">Como foi o serviço?</string>
     <string name="round_up_tip">Arredonda?</string>
     <string name="calculate">Calcular</string>
-    <string name="tip_amount">Gorjeta Total</string>
-    <string name="result">Resultado</string>
+    <string name="tip_amount">Gorjeta Total: %s</string>
 </resources>
