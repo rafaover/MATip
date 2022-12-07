@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Tip Mate</string>
+    <string name="app_name" translatable="false">MATip</string>
     <string name="cost_of_service">Cost of Service</string>
     <string name="okay_10">Okay (10%)</string>
     <string name="good_15">Good (15%)</string>

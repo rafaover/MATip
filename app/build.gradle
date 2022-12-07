@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.tipmate'
+    namespace 'com.example.matip'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.tipmate"
+        applicationId "com.example.matip"
         minSdk 19
         targetSdk 33
         versionCode 1

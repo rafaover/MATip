@@ -1,4 +1,4 @@
-package com.example.tipmate
+package com.example.matip
 
 import org.junit.Test
 
