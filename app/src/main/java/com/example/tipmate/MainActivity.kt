@@ -25,15 +25,15 @@ class MainActivity : AppCompatActivity() {
     // Function to calculate the TIP when value is added and button pushed
     fun calculateTip(){
         // getting the text attribute from costOfService(EDITTEXT)
-        // The toString() was added because the data type in a EDITTEXT is an EDIBLE not String.
+        // toString() added because EDITTEXT data type is EDIBLE, not String.
         val stringCostOfService = binding.costOfService.text.toString()
 
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
         if (doubleCostOfService == null) {
             Snackbar.make(findViewById(R.id.calculate_button), "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
+            binding.tipResult.text = ""
             return
         }
-
 
         //Binding the RadioButtonGroup and getting the selected RadioButton
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
