@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Function to calculate the TIP when value is added and button pushed
-    fun calculateTip(){
+    private fun calculateTip(){
         // getting the text attribute from costOfService(EDITTEXT)
         // toString() added because EDITTEXT data type is EDIBLE, not String.
         val stringCostOfService = binding.costOfService.text.toString()
@@ -31,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
         if (doubleCostOfService == null) {
             Snackbar.make(findViewById(R.id.calculate_button), "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
-            binding.tipResult.text = ""
+            displayTip(0.0)
             return
         }
 
-        //Binding the RadioButtonGroup and getting the selected RadioButton
+        //Binding the RadioButtonGroup and getting the selected RadioButton (TIP %)
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
 
         // Getting the right Tip percentage
@@ -47,17 +47,20 @@ class MainActivity : AppCompatActivity() {
         }
         // Final TIP calculation
         var finalTip = tipSelected * doubleCostOfService
-
         // Tip rounding Up
-        val roundUpTip = binding.roundUpSwitch.isChecked
-        if (roundUpTip) { finalTip = kotlin.math.ceil(finalTip) }
-
-        // Formating the tip value for the local currency
-        NumberFormat.getCurrencyInstance()
-        val formattedTip = NumberFormat.getCurrencyInstance().format(finalTip)
-
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+        if (binding.roundUpSwitch.isChecked) {
+            finalTip = kotlin.math.ceil(finalTip)
+        }
+        // Formatting the final TIP result
+        displayTip(finalTip)
         niceTipSnackBar()
+    }
+
+    // Function to format the tip value for the local currency
+    private fun displayTip(Tip: Double) {
+        NumberFormat.getCurrencyInstance()
+        val formattedTip = NumberFormat.getCurrencyInstance().format(Tip)
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 
     // Method to show a snackbar at the bottom when the user gives the tip.
