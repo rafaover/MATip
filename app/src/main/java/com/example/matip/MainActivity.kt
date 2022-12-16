@@ -68,6 +68,9 @@ class MainActivity : AppCompatActivity() {
         val snackListPos = listOf(
             "Well Done!", "Let's Roll", "Hell Yeah!", "Noice!"
         )
-        Snackbar.make(findViewById(R.id.calculate_button), snackListPos.random(), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            findViewById(R.id.calculate_button), snackListPos.random(), Snackbar.LENGTH_SHORT
+        ).show()
+
     }
 }
