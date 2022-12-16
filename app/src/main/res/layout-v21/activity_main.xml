@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:checkedButton="@id/percent_option_10"
         android:orientation="vertical"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_question">
 
@@ -69,6 +70,7 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/round_up_tip"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tip_options"
         app:layout_constraintTop_toBottomOf="@+id/tip_options" />
@@ -79,6 +81,8 @@
         android:layout_height="wrap_content"
         android:text="@string/calculate"
         android:textAllCaps="true"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/round_up_switch" />
@@ -89,6 +93,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         tools:text="Tip Amount: $0.00"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculate_button" />
 
