@@ -55,10 +55,11 @@
         app:srcCompat="@drawable/ic_how_service" />
 
     <TextView
+        style="@style/Widget.matip.TextView"
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:layout_marginStart="16dp"
         android:text="@string/how_was_the_service"
         app:layout_constraintStart_toEndOf="@id/icon_cost_service"
@@ -116,7 +117,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:checked="true"
         android:text="@string/round_up_tip"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,12 +136,13 @@
         app:layout_constraintTop_toBottomOf="@+id/round_up_switch" />
 
     <TextView
+        style="@style/Widget.matip.TextView"
         android:id="@+id/tip_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_marginTop="15dp"
-        tools:text="Tip Amount: $0.00"
+        android:layout_marginTop="14dp"
+        tools:text="Tip: $0.00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculate_button" />
 
