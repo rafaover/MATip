@@ -11,14 +11,22 @@
         android:id="@+id/cost_of_Service"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
+        android:maxWidth="200dp"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
         android:autofillHints="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/cost_of_service">
+        app:endIconMode="clear_text"
+        android:hint="@string/cost_of_service"
+        app:expandedHintEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cost_of_service_edit_text"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             />
@@ -29,6 +37,7 @@
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/how_was_the_service"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cost_of_Service" />
@@ -75,6 +84,7 @@
         android:id="@+id/round_up_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:checked="true"
         android:text="@string/round_up_tip"
         app:layout_constraintEnd_toEndOf="parent"
