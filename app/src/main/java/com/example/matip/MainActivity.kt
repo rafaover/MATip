@@ -26,8 +26,7 @@ class MainActivity : AppCompatActivity() {
     private fun calculateTip(){
         // getting the text attribute from costOfService(EDITTEXT)
         // toString() added because EDITTEXT data type is EDIBLE, not String.
-        val stringCostOfService = binding.costOfService.text.toString()
-
+        val stringCostOfService = binding.costOfServiceEditText.text.toString()
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
         if (doubleCostOfService == null) {
             Snackbar.make(findViewById(R.id.calculate_button), "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
