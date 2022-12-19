@@ -19,15 +19,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Setting a keylistener to InputText to hide the keyboard when the user
+        // presses the enter key
+        binding.costOfServiceEditText.setOnKeyListener {
+                view, keyCode, _ -> keyboardKeyEvent(view, keyCode)
+        }
+
         // Binding calculateButton(Button) to a ClickListener and
         // executing the calculate() method
-        binding.calculateButton.setOnClickListener {
-            calculateTip()
-        }
+        binding.calculateButton.setOnClickListener { calculateTip() }
     }
 
     // function to hide the keyboard when enter key is pressed
-    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+    private fun keyboardKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             // Hide the keyboard
             val inputMethodManager =
