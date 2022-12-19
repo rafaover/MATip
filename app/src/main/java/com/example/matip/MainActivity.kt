@@ -1,7 +1,11 @@
 package com.example.matip
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.example.matip.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
@@ -20,6 +24,18 @@ class MainActivity : AppCompatActivity() {
         binding.calculateButton.setOnClickListener {
             calculateTip()
         }
+    }
+
+    // function to hide the keyboard when enter key is pressed
+    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            // Hide the keyboard
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            return true
+        }
+        return false
     }
 
     // Function to calculate the TIP when value is added and button pushed
