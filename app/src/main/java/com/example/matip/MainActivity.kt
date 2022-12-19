@@ -28,19 +28,27 @@ class MainActivity : AppCompatActivity() {
 
         // Binding calculateButton(Button) to a ClickListener and
         // executing the calculate() method
-        binding.calculateButton.setOnClickListener { calculateTip() }
+        binding.calculateButton.setOnClickListener {
+            hideSoftInput(view = it)
+            calculateTip()
+            niceTipSnackBar()
+        }
     }
 
     // function to hide the keyboard when enter key is pressed
-    private fun keyboardKeyEvent(view: View, keyCode: Int): Boolean {
+    fun keyboardKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
-            // Hide the keyboard
-            val inputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            hideSoftInput(view)
             return true
         }
         return false
+    }
+
+    // Hide the keyboard
+    fun hideSoftInput(view: View){
+        val inputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     // Function to calculate the TIP when value is added and button pushed
@@ -50,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         val stringCostOfService = binding.costOfServiceEditText.text.toString()
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
         if (doubleCostOfService == null) {
-            Snackbar.make(findViewById(R.id.calculate_button), "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(findViewById(R.id.calculate_button),
+                "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
             displayTip(0.0)
             return
         }
@@ -73,7 +82,6 @@ class MainActivity : AppCompatActivity() {
         }
         // Formatting the final TIP result
         displayTip(finalTip)
-        niceTipSnackBar()
     }
 
     // Function to format the tip value for the local currency
