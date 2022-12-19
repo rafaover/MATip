@@ -15,5 +15,8 @@
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="android:textColorSecondary">@color/secondaryTextColor</item>
         <!-- Customize your theme here. -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="radioButtonStyle">@style/Widget.matip.CompoundButton.RadioButton</item>
+        <item name="switchStyle">@style/Widget.matip.CompoundButton.Switch</item>
     </style>
 </resources>
