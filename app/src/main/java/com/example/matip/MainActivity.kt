@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         // toString() added because EDITTEXT data type is EDIBLE, not String.
         val stringCostOfService = binding.costOfServiceEditText.text.toString()
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
-        if (doubleCostOfService == null) {
+        if (doubleCostOfService == null || doubleCostOfService == 0.0){
             Snackbar.make(findViewById(R.id.calculate_button),
                 "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
             displayTip(0.0)
