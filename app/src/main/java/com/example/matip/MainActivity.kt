@@ -1,11 +1,11 @@
 package com.example.matip
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.matip.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         // Setting a keylistener to InputText to hide the keyboard
         // when the user presses the enter key
-        binding.costOfServiceEditText.setOnKeyListener {
-                view, keyCode, _ -> enterKeyEvent(view, keyCode)
+        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
+            enterKeyEvent(view, keyCode)
         }
 
         binding.calculateButton.setOnClickListener {
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Binding the RadioButtonGroup and getting the selected RadioButton (TIP %)
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
         // Getting the right Tip percentage
-        val tipSelected = when(tipPercentOption) {
+        val tipSelected = when (tipPercentOption) {
             R.id.percent_option_20 -> 0.20
             R.id.percent_option_15 -> 0.15
             R.id.percent_option_10 -> 0.10
@@ -93,13 +93,17 @@ class MainActivity : AppCompatActivity() {
         val snackListPos = listOf(
             "Well Done!", "Let's Roll", "Hell Yeah!", "Noice!"
         )
-        Snackbar.make(findViewById(R.id.calculate_button),
-            snackListPos.random(), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            findViewById(R.id.calculate_button),
+            snackListPos.random(), Snackbar.LENGTH_SHORT
+        ).show()
 
     }
 
     fun noInputSnackBar() {
-        Snackbar.make(findViewById(R.id.calculate_button),
-            "Add a real value, mate!", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            findViewById(R.id.calculate_button),
+            "Add a real value, mate!", Snackbar.LENGTH_SHORT
+        ).show()
     }
 }
