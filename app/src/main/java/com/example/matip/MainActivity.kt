@@ -20,14 +20,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setting a keylistener to InputText to hide the keyboard when the user
+        // keylistener to hide the keyboard when the user
         // presses the enter key
         binding.costOfServiceEditText.setOnKeyListener {
                 view, keyCode, _ -> keyboardKeyEvent(view, keyCode)
         }
 
-        // Binding calculateButton(Button) to a ClickListener and
-        // executing the calculate() method
+        // Binding calculateButton(Button) to a ClickListener
         binding.calculateButton.setOnClickListener {
             hideSoftInput(view = it)
             calculateTip()
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // function to hide the keyboard when enter key is pressed
+    // Hide the keyboard when enter key is pressed
     fun keyboardKeyEvent(view: View, keyCode: Int): Boolean {
         if (keyCode == KeyEvent.KEYCODE_ENTER) {
             hideSoftInput(view)
@@ -51,22 +50,24 @@ class MainActivity : AppCompatActivity() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    // Function to calculate the TIP when value is added and button pushed
-    private fun calculateTip(){
-        // getting the text attribute from costOfService(EDITTEXT)
-        // toString() added because EDITTEXT data type is EDIBLE, not String.
+    // getting the text attribute from costOfService(EDITTEXT)
+    // toString() added because EDITTEXT data type is EDIBLE, not String.
+    fun costOfService(): Double {
         val stringCostOfService = binding.costOfServiceEditText.text.toString()
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
-        if (doubleCostOfService == null || doubleCostOfService == 0.0){
-            Snackbar.make(findViewById(R.id.calculate_button),
-                "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
+        if (doubleCostOfService == null || doubleCostOfService == 0.0) {
+            Snackbar.make(
+                findViewById(R.id.calculate_button),
+                "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT
+            ).show()
             displayTip(0.0)
-            return
         }
+        return doubleCostOfService ?: 0.0
+    }
 
+    fun finaTipCalculus(): Double {
         //Binding the RadioButtonGroup and getting the selected RadioButton (TIP %)
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
-
         // Getting the right Tip percentage
         val tipSelected = when(tipPercentOption) {
             R.id.percent_option_20 -> 0.20
@@ -75,17 +76,15 @@ class MainActivity : AppCompatActivity() {
             else -> 0.0
         }
         // Final TIP calculation
-        var finalTip = tipSelected * doubleCostOfService
-        // Tip rounding Up
+        var finalTip = tipSelected * costOfService()
         if (binding.roundUpSwitch.isChecked) {
             finalTip = kotlin.math.ceil(finalTip)
         }
-        // Formatting the final TIP result
-        displayTip(finalTip)
+        return displayTip(finalTip)
     }
 
     // Function to format the tip value for the local currency
-    private fun displayTip(Tip: Double) {
+    fun displayTip(Tip: Double) {
         NumberFormat.getCurrencyInstance()
         val formattedTip = NumberFormat.getCurrencyInstance().format(Tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
