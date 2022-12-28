@@ -51,19 +51,24 @@ class MainActivity : AppCompatActivity() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    // Function to calculate the TIP when value is added and button pushed
-    private fun calculateTip(){
+    fun costOfService(): Double {
         // getting the text attribute from costOfService(EDITTEXT)
         // toString() added because EDITTEXT data type is EDIBLE, not String.
         val stringCostOfService = binding.costOfServiceEditText.text.toString()
         val doubleCostOfService = stringCostOfService.toDoubleOrNull()
-        if (doubleCostOfService == null) {
+        while (doubleCostOfService == null || doubleCostOfService == 0.0) {
             Snackbar.make(findViewById(R.id.calculate_button),
                 "I NEED A NUMBER, MATE", Snackbar.LENGTH_SHORT).show()
             displayTip(0.0)
-            return
         }
+        return doubleCostOfService ?: 0.0
+    }
 
+    // Function to calculate the TIP when value is added and button pushed
+    private fun calculateTip(){
+
+        costOfService()
+        
         //Binding the RadioButtonGroup and getting the selected RadioButton (TIP %)
         val tipPercentOption = binding.tipOptions.checkedRadioButtonId
 
@@ -75,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             else -> 0.0
         }
         // Final TIP calculation
-        var finalTip = tipSelected * doubleCostOfService
+        var finalTip = tipSelected * costOfService()
         // Tip rounding Up
         if (binding.roundUpSwitch.isChecked) {
             finalTip = kotlin.math.ceil(finalTip)
